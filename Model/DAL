@@ -1,0 +1,19 @@
+<?php
+// In PHP versions earlier than 4.1.0, $HTTP_POST_FILES should be used instead
+// of $_FILES.
+class DAL{
+
+	public function uploadfile(){
+		
+		$uploaddir = 'data/';
+		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+		var_dump($_FILES);
+		if (move_uploaded_file($_FILES['userfile']['name'], $uploadfile)) {
+			echo '<img src="../data/'.$_FILES['userfile']['name'].'" >';
+		   return "true";
+		} else {
+			echo "false";
+		    return "false";
+		}
+	}
+}
