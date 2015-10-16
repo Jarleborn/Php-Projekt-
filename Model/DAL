@@ -3,17 +3,27 @@
 // of $_FILES.
 class DAL{
 
+	private $FileModel;
+
+	public function __construct(FileModel $FileModel){
+
+		$this->FileModel = $FileModel;
+	}
 	public function uploadfile(){
 		
 		$uploaddir = 'data/';
 		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-		var_dump($_FILES);
-		if (move_uploaded_file($_FILES['userfile']['name'], $uploadfile)) {
-			echo '<img src="../data/'.$_FILES['userfile']['name'].'" >';
-		   return "true";
+		//var_dump($_FILES);
+
+		$this->FileModel->validateTheFIle($_FILES);
+		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+			echo '<img src="http://hampusjarleborn.se/php_proj/data/'.$_FILES['userfile']['name'].'" > <br /> <br />';
+			echo 'Här har du delnings länken: <a href="http://hampusjarleborn.se/php_proj/data/'.$_FILES['userfile']['name'].'">http://hampusjarleborn.se/php_proj/data/'.$_FILES['userfile']['name'].'"</a>';
+		  // return "true";
 		} else {
-			echo "false";
-		    return "false";
+			
+			//var_dump($_FILES);
+			//
 		}
 	}
 }
