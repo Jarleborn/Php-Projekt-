@@ -1,7 +1,7 @@
 <?php
 
 class FileModel {
-
+	private $response = [];
 	public function validateTheFIle($UserInputedFIle){
 		$acceptable = array(
         'application/pdf',
@@ -13,34 +13,28 @@ class FileModel {
 		//var_dump($UserInputedFIle);
 		//var_dump($UserInputedFIle['userfile']['name']);
     	try{
-			if (!isset($UserInputedFIle['userfile']['error']) || is_array($UserInputedFIle['userfile']['error'])) {
-		        switch ($UserInputedFIle['userfile']['error']) {
-			        
-			        case UPLOAD_ERR_OK:
-			            break;
-			        case UPLOAD_ERR_NO_FILE:
-			            throw new RuntimeException('No file sent.');
-			        case UPLOAD_ERR_INI_SIZE:
-			        case UPLOAD_ERR_FORM_SIZE:
-			            throw new RuntimeException('Exceeded filesize limit.');
-			        default:
-			            throw new RuntimeException('Unknown errors.');
-		    	}
 
-		    	
-		    }
-		    if ($UserInputedFIle['userfile']['size'] > 29) {
-	       			echo RuntimeException('Exceeded filesize limit.');
+    		//var_dump($UserInputedFIle['userfile']);
+			if(!in_array($UserInputedFIle['userfile']['type'], $acceptable) && (!empty($UserInputedFIle["userfile"]["type"]))) {
+    				throw new RuntimeException('Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.');
+    				//echo $errors[0];
+			}
+		    elseif ($UserInputedFIle['userfile']['size'] > 299999999) {
+	       			throw new RuntimeException('Exceeded filesize limit.');
+   			}
+   			elseif(!isset($UserInputedFIle['userfile']['error']) || is_array($UserInputedFIle['userfile']['error'])){
+   				//return true, $UserInputedFIle['userfile']['name'];
+   				$this->response[0] = true;
+	    		$this->response[1] = $UserInputedFIle['userfile']['name'];
+	    		return $this->response;
    			}
 
-	   		if(!in_array($UserInputedFIle['userfile']['type'], $acceptable) && (!empty($UserInputedFIle["userfile"]["type"]))) {
-    				$errors[] = 'Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.';
-    				echo $errors[0];
-			}
+	   		
 	    }
 	    catch(RuntimeException $ex){
-
-	    	return $ex;
+	    	$this->response[0] = false;
+	    	$this->response[1] = $ex->getMessage();
+	    	return $this->response;
 	    }		
 	}
 }
