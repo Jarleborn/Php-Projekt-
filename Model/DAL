@@ -1,7 +1,7 @@
 <?php
 // In PHP versions earlier than 4.1.0, $HTTP_POST_FILES should be used instead
 // of $_FILES.
-require_once 'View/UploadView.php';
+
 
 class DAL{
 
@@ -13,24 +13,18 @@ class DAL{
 
 		$this->FileModel = $FileModel;
 	}
+	public function GetFileToUpload()
+	{
+		return $_FILES;
+	}
 	public function uploadfile(){
-		$UploadView = new uploadedView();
+		
 		$uploaddir = 'data/';
 		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 		//var_dump($_FILES);
-
-		//$this->FileModel->validateTheFIle($_FILES);
-	
-
-			if($this->FileModel->validateTheFIle($_FILES)[0]){
-				move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
-				//var_dump(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile));
-				$UploadView->renderSuccessResponse($this->FileModel->validateTheFIle($_FILES)[1]);	
-			}
-			else{
-			var_dump($_FILES);
-			$UploadView->renderFailResponse($this->FileModel->validateTheFIle($_FILES)[1]);	
-			var_dump(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile));	  
-			}
+		if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
+			return true;
+		}
+		return false;	
 	}
 }

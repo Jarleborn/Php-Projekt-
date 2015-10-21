@@ -14,7 +14,15 @@ class uploadedView{
 
 	public function renderSuccessResponse($Name)
 	{
-		echo 'Bilden laddades upp utan problem! <br /> Använd denna länken för delning 
-		<a href="http://hampusjarleborn.se/php_proj/data/'.$Name.'">http://hampusjarleborn.se/php_proj/data/'.$Name.'"</a>';
+		echo 'Bilden laddades upp utan problem! <br /><br /><br /> 
+		<img src="http://hampusjarleborn.se/php_proj/data/'.$Name.'" />
+		<br /><br />
+		 Använd denna länken för delning 
+		<a href="http://hampusjarleborn.se/php_proj/data/'.$Name.'">
+			http://hampusjarleborn.se/php_proj/data/'.$Name.'
+		</a>';
+		
+		
+		
 	}
 }

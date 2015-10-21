@@ -19,14 +19,15 @@ class FileModel {
     				throw new RuntimeException('Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.');
     				//echo $errors[0];
 			}
-		    elseif ($UserInputedFIle['userfile']['size'] > 299999999) {
+		    elseif ($UserInputedFIle['userfile']['size'] > 299999999999) {
 	       			throw new RuntimeException('Exceeded filesize limit.');
    			}
-   			elseif(!isset($UserInputedFIle['userfile']['error']) || is_array($UserInputedFIle['userfile']['error'])){
+   			else{
    				//return true, $UserInputedFIle['userfile']['name'];
    				$this->response[0] = true;
 	    		$this->response[1] = $UserInputedFIle['userfile']['name'];
 	    		return $this->response;
+	    		//return $this->returnResponse($this->response);
    			}
 
 	   		
@@ -35,7 +36,16 @@ class FileModel {
 	    	$this->response[0] = false;
 	    	$this->response[1] = $ex->getMessage();
 	    	return $this->response;
+	    	//return $this->returnResponse($this->response);
 	    }		
 	}
+
+	// public function returnResponse($res)
+	// {
+	// 	if ($res[0]) {
+	// 		return $res[1];
+	// 	}
+	// 	return $res[1];
+	// }
 }
 
