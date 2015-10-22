@@ -17,10 +17,12 @@ class DAL{
 	{
 		return $_FILES;
 	}
-	public function uploadfile(){
-		
+	public function uploadfile($newFileName){
+		//var_dump($newFileName);
+		$_FILES['userfile']['name'] = $newFileName;
 		$uploaddir = 'data/';
 		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+		
 		//var_dump($_FILES);
 		if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
 			return true;

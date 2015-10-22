@@ -19,7 +19,7 @@ class uploadControll{
 		$response =$this->FileModel->validateTheFIle( $this->DAL->GetFileToUpload());
 		//var_dump($response);
 				if($response[0]){
-					if($this->DAL->uploadfile()){
+					if($this->DAL->uploadfile($response[1])){
 						$this->uploadView->renderSuccessResponse($response[1]);
 					}
 					else{

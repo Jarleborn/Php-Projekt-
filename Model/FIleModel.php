@@ -25,7 +25,12 @@ class FileModel {
    			else{
    				//return true, $UserInputedFIle['userfile']['name'];
    				$this->response[0] = true;
+   				
+   				$UserInputedFIle['userfile']['name'] = $this->changeName( $UserInputedFIle['userfile']['name'], pathinfo($UserInputedFIle["userfile"]["name"],PATHINFO_EXTENSION) );
+   				//var_dump($UserInputedFIle['userfile']['name']);
 	    		$this->response[1] = $UserInputedFIle['userfile']['name'];
+
+	    		//var_dump($this->response);
 	    		return $this->response;
 	    		//return $this->returnResponse($this->response);
    			}
@@ -40,6 +45,16 @@ class FileModel {
 	    }		
 	}
 
+	public function changeName($fileName,$type)
+	{
+		//var_dump($type);
+		//var_dump(basename($fileName, $type));
+		$randomNumerName =  rand(0, PHP_INT_MAX);
+		$fileName = $randomNumerName.".".$type;
+		//var_dump($fileName);
+
+		return $fileName;
+		}
 	// public function returnResponse($res)
 	// {
 	// 	if ($res[0]) {
