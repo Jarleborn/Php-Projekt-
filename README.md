@@ -1,2 +1,5 @@
-php_value upload_max_filesize 420M
-php_value post_max_size 420M
+# Hampus Bildupladningstjänst!
+
+##Vision 
+
+Jag vill att man smidigt och enkelt ska kunna ladda upp bidler.
