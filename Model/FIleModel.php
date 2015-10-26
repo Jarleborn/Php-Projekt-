@@ -19,7 +19,7 @@ class FileModel {
     				throw new RuntimeException('Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.');
     				//echo $errors[0];
 			}
-		    elseif ($UserInputedFIle['userfile']['size'] > 299999999999) {
+		    elseif ($UserInputedFIle['userfile']['size'] > 1073741824) {
 	       			throw new RuntimeException('Exceeded filesize limit.');
    			}
    			else{

@@ -36,3 +36,37 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 5.1. Användaren får ett meddelande om att "Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.", 
 	
     5.2. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
+
+
+**Mandatory test-cases**
+
+1 - Upladning
+	
+	1.1 - När användaren klickar på "välj fil" så ska en ruta där anvädnaren kan blädra och välj filer från sin dator dycka upp
+
+	1.2 - När användaren klickar på "send file" så ska filen skickas vidare till valideringen 
+
+2 - Validering 
+	
+	2.1 - Godtjända filer
+
+		2.1.1 - Om användaren väljer en fil av typen PDF så ska ett meddelande om att filen har laddats upp
+
+		2.1.2 - Om användaren väljer en fil av typen PNG så ska ett meddelande om att filen har laddats upp
+
+		2.1.3 - Om användaren väljer en fil av typen JPEG så ska ett meddelande om att filen har laddats upp
+
+		2.1.4 - Om användaren väljer en fil av typen GIF så ska ett meddelande om att filen har laddats upp
+
+	2.2 - Felaktiga filer
+		2.2.2 - Om användaren laddar upp en fil större en 1GB ska ett fel meddelande som säger "Exceeded filesize limit" vissas
+		
+		2.2.3 - Om användaren laddar upp en fil som inte är någon av följaden typer PDF, JPG, GIF and PNG så vissas ett meddelande som säger 'Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.'
+
+3 - Visning
+	
+	3.1 -  När en uppladning lyckas ska bilden användaren valt vissas
+
+	3.2 - När en uppladning lyckas ska en länk till bilden vissas
+
+	3.3 - formuläret för uppladning ska alltid synsas för att öka möjligheten för att ladda upp en ny fil snabbt och smidigt
