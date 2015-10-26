@@ -20,9 +20,9 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 
 5.1. Användaren får ett meddelande om att filen har laddats upp, 
 	
-        5.2. får se filen och en länk till filen presenteras.  
+    5.2. får se filen och en länk till filen presenteras.  
 		
-              5.3. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
+        5.3. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
 
 **Sekundärt User-case**
 1. Använaderen går in på sidan.
@@ -35,4 +35,4 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 
 5.1. Användaren får ett meddelande om att "Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.", 
 	
-              5.2. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
+    5.2. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
