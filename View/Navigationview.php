@@ -30,7 +30,7 @@ private $response;
 	    <input type="submit" value="Skicka upp filen på servern" />
 		</form>
 		<br />
-		<p>Endast PNG, JPEG, GIF och PDF är tillåtna</p>';
+		<p>Endast PNG, JPEG och GIF är tillåtna</p>';
 
 		echo $this->response;
 	}

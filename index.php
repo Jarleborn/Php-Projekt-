@@ -7,10 +7,10 @@ require_once ('Controller/uploadController.php');
 require_once ('View/UploadView.php');
 require_once ('View/recentView.php');
 require_once ('Controller/recentController.php');
-//require_once('View/SuccessedUploadView.php');
+
 
 error_reporting(E_ALL);
-ini_set('display_errors', 'on');
+ini_set('display_errors', 'off');
 
 $FileModel = new FileModel();
 $DAL = new DAL($FileModel);
@@ -25,5 +25,3 @@ $NavigationView->renderUploadForm();
 
 ?>
 
-
-<!-- //<p>HOJ</p> -->

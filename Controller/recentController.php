@@ -1,6 +1,7 @@
 <?php
 
 class RecentController {
+	
 	private $RecentView;
 	private $DAL;
 
@@ -9,16 +10,11 @@ class RecentController {
 		$this->RecentView = $RecentView;
 		$this->DAL = $DAL;
 		$this->renderRecent();
-		//$this->DoesUserWantToUpload();
 	}
-
-
 
 	public function renderRecent(){
 		$recentImages = $this->DAL->getrecentImages();
 		$this->RecentView->renderRecent($recentImages);
 	}
-
-
 
 }

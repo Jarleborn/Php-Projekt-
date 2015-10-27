@@ -10,13 +10,15 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 
 **Primärt User-case**
 
+Uppladning
+
 1. Använaderen går in på sidan.
  
 2. Användaren klickar på välj fil. 
 
 3. Användaren väljer en bild fil  
 
-4. Användaren klickar send file. 
+4. Användaren klickar "Skicka upp filen på servern". 
 
 5.1. Användaren får ett meddelande om att filen har laddats upp, 
 	
@@ -25,13 +27,15 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
         5.3. Om användaren vill ladda på en till så finns den möjligheten då formuläret ligger kvar 
 
 **Sekundärt User-case**
+Uppladning
+
 1. Använaderen går in på sidan.
  
 2. Användaren klickar på välj fil. 
 
 3. Användaren väljer en .psd fil  
 
-4. Användaren klickar send file. 
+4. Användaren klickar "Skicka upp filen på servern". 
 
 5.1. Användaren får ett meddelande om att "Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.", 
 	
@@ -44,7 +48,7 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 	
 	1.1 - När användaren klickar på "välj fil" så ska en ruta där anvädnaren kan blädra och välj filer från sin dator dycka upp
 
-	1.2 - När användaren klickar på "send file" så ska filen skickas vidare till valideringen 
+	1.2 - När användaren klickar på "Skicka upp filen på servern" så ska filen skickas vidare till valideringen 
 
 2 - Validering 
 	
@@ -70,3 +74,11 @@ Så jag vill göra en tjänst som laddar upp bilder och pdfer utan massa lull lu
 	3.2 - När en uppladning lyckas ska en länk till bilden vissas
 
 	3.3 - formuläret för uppladning ska alltid synsas för att öka möjligheten för att ladda upp en ny fil snabbt och smidigt
+
+4- Nyligen uppladade bilder
+
+	4.1 - När användaren kommer till sidan ska texten "Nyligen uppladdade bilder synas"
+
+	4.2 - Under ska de fem senaste bilderna vissas.
+
+	4.3 - Om användaren lyckas ladda upp den bild ska den läggas till första av de fem och den sista ska försvinan
