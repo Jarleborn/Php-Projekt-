@@ -1,0 +1,32 @@
+html{
+	background-image: url("pics/back.png");
+}
+
+body{
+	     width: 70%;
+    margin: auto;
+    color: black;
+    font-family: arial;
+    font-size: 19px;
+    background-color: lavender;
+    padding: 10px;
+    margin-top: 4%;
+   
+text-align: center;
+}
+
+input{
+	color: black;
+    font-family: arial;
+    font-size: 19px;
+}
+
+form{
+	    text-align: center;
+    margin-top: 37px;
+}
+
+img{
+	    max-width: 87%;
+
+}
