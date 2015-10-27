@@ -30,3 +30,17 @@ img{
 	    max-width: 87%;
 
 }
+
+.recImage{
+    width: 117px;
+    display: block;
+    float: left;
+    /* margin: auto; */
+    /* text-align: center; */
+    margin-left: 65px;
+    margin-bottom: 26px;
+}
+
+hr{
+    clear: both;
+}

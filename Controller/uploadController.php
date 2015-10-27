@@ -21,6 +21,7 @@ class uploadControll{
 				if($response[0]){
 					if($this->DAL->uploadfile($response[1])){
 						$this->uploadView->renderSuccessResponse($response[1]);
+						$this->DAL->saveImageLink($response[1]);
 					}
 					else{
 						$this->uploadView->renderFailResponse($response[1]);	
