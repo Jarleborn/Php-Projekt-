@@ -18,6 +18,9 @@ class FileModel {
 		    elseif ($UserInputedFIle['userfile']['size'] > 1073741824) {
        			throw new RuntimeException('Exceeded filesize limit.');
    			}
+				elseif ($UserInputedFIle['userfile']['size'] < 0.5) {
+       			throw new RuntimeException('You have to choose a file');
+   			}
    			else{
    				$this->response[0] = true;
    				$UserInputedFIle['userfile']['name'] = $this->changeName( $UserInputedFIle['userfile']['name'], pathinfo($UserInputedFIle["userfile"]["name"],PATHINFO_EXTENSION) );
@@ -25,13 +28,13 @@ class FileModel {
 	    		return $this->response;
    			}
 
-	   		
+
 	    }
 	    catch(RuntimeException $ex){
 	    	$this->response[0] = false;
 	    	$this->response[1] = $ex->getMessage();
 	    	return $this->response;
-	    }		
+	    }
 	}
 
 	public function changeName($fileName,$type)
@@ -41,4 +44,3 @@ class FileModel {
 		return $fileName;
 		}
 }
-

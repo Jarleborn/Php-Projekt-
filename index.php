@@ -10,7 +10,7 @@ require_once ('Controller/recentController.php');
 
 
 error_reporting(E_ALL);
-ini_set('display_errors', 'off');
+ini_set('display_errors', 'on');
 
 $FileModel = new FileModel();
 $DAL = new DAL($FileModel);
@@ -24,4 +24,3 @@ $recentController = new RecentController($recentView, $DAL);
 $NavigationView->renderUploadForm();
 
 ?>
-

@@ -1,7 +1,7 @@
 <?php
 
 class RecentView {
-	
+
 	public function renderRecent($recent){
 		echo " <hr />  <p>Nyligen uppladdade bilder</p>";
 		foreach ($recent as $pics ) {
@@ -10,6 +10,10 @@ class RecentView {
 		echo "<br /> <hr />";
 	}
 
+	public function showDatabseError($exeception)
+	{
+	     echo $exeception;
+	}
 
 
 

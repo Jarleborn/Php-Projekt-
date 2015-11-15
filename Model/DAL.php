@@ -28,11 +28,11 @@ class DAL{
 		$_FILES['userfile']['name'] = $newFileName;
 		$uploaddir = 'data/';
 		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-		
+
 		if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
 			return true;
 		}
-		return false;	
+		return false;
 	}
 
 	public function getrecentImages()
@@ -45,7 +45,7 @@ class DAL{
 		$stmt->execute();
 
 		$stmt->bind_result($recentImageLink);
-		
+
 		while($stmt->fetch()){
 			$this->recentImageLinks[] = $recentImageLink;
 		}
@@ -60,7 +60,7 @@ class DAL{
 			if ($stmt === FALSE) {
 				throw new Exception("A database error");
 			}
-			
+
 			$stmt->bind_param('is', $var, $link);
 
 			if($stmt->execute()){
@@ -69,7 +69,7 @@ class DAL{
 
 		}
 		catch (Exception $e) {
-    			echo 'Caught exception: ',  $e->getMessage(), "\n";
+    			return 'Caught exception: '.  $e->getMessage(). "\n";
 			}
 	}
 }
