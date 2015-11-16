@@ -19,57 +19,18 @@ class DAL{
 			}
 	}
 
-	public function GetFileToUpload()
-	{
-		return $_FILES;
-	}
+	// public function GetFileToUpload()
+	// {
+	// 	return $_FILES;
+	// }
 
-	public function uploadfile($newFileName){
-		$_FILES['userfile']['name'] = $newFileName;
-		$uploaddir = 'data/';
-		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+	public function uploadfile($thefile){
 
-		if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
+		if(move_uploaded_file($thefile[0], $thefile[1])){
 			return true;
 		}
 		return false;
 	}
 
-	public function getrecentImages()
-	{
-		$stmt = $this->mysqli->prepare("SELECT link FROM  `links` ORDER BY id DESC LIMIT 0 , 5");
-		if($stmt === false){
-			throw new Exception("A database error");
-		}
 
-		$stmt->execute();
-
-		$stmt->bind_result($recentImageLink);
-
-		while($stmt->fetch()){
-			$this->recentImageLinks[] = $recentImageLink;
-		}
-		return $this->recentImageLinks;
-	}
-
-	public function saveImageLink($link)
-	{
-		try{
-			$var = null;
-			$stmt = $this->mysqli->prepare("INSERT INTO  `images`.`links` (`id`, `link`) VALUES (?, ?)");
-			if ($stmt === FALSE) {
-				throw new Exception("A database error");
-			}
-
-			$stmt->bind_param('is', $var, $link);
-
-			if($stmt->execute()){
-				return true;
-			}
-
-		}
-		catch (Exception $e) {
-    			return 'Caught exception: '.  $e->getMessage(). "\n";
-			}
-	}
 }

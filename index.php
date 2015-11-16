@@ -7,6 +7,7 @@ require_once ('Controller/uploadController.php');
 require_once ('View/UploadView.php');
 require_once ('View/recentView.php');
 require_once ('Controller/recentController.php');
+require_once ('Model/RecentDAL.php');
 
 
 error_reporting(E_ALL);
@@ -14,12 +15,13 @@ ini_set('display_errors', 'on');
 
 $FileModel = new FileModel();
 $DAL = new DAL($FileModel);
+$RecentDAL = new RecentDAL();
 $NavigationView = new NavigationView($DAL);
 $NavigationView->renderHeader();
 $UploadView = new uploadedView();
-$uploadControll = new uploadControll($FileModel, $UploadView, $DAL);
+$uploadControll = new uploadControll($FileModel, $UploadView, $DAL, $RecentDAL);
 $recentView = new RecentView();
-$recentController = new RecentController($recentView, $DAL);
+$recentController = new RecentController($recentView, $RecentDAL);
 
 $NavigationView->renderUploadForm();
 

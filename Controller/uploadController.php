@@ -4,11 +4,13 @@ class uploadControll{
 
 	private $FileModel;
 	private $uploadView;
+	private $RecentDAL;
 
-	function __construct(FileModel $FileModel, uploadedView $uploadView, DAL $DAL) {
-		$this->FileModel =  $FileModel; 
+	function __construct(FileModel $FileModel, uploadedView $uploadView, DAL $DAL, RecentDAL $RecentDAL) {
+		$this->FileModel =  $FileModel;
 		$this->uploadView = $uploadView;
 		$this->DAL = $DAL;
+		$this->RecentDAL = $RecentDAL;
 
 		$this->DoesUserWantToUpload();
 	}
@@ -16,19 +18,20 @@ class uploadControll{
 	public function UploadImage()
 	{
 
-		$response = $this->FileModel->validateTheFIle( $this->DAL->GetFileToUpload());
+		$response = $this->FileModel->validateTheFIle( $this->uploadView->GetFileToUpload());
 				if($response[0]){
-					if($this->DAL->uploadfile($response[1])){
+					if($this->DAL->uploadfile($this->uploadView->UploadTheFIlesFromTheView($response[1]))                                                                                                                                                             ){
+
 						$this->uploadView->renderSuccessResponse($response[1]);
-						$this->DAL->saveImageLink($response[1]);
+						$this->RecentDAL->saveImageLink($response[1]);
 					}
 					else{
-						$this->uploadView->renderFailResponse($response[1]);	
+						$this->uploadView->renderFailResponse($response[1]);
 					}
-					
+
 				}
 				else{
-					$this->uploadView->renderFailResponse($response[1]);	
+					$this->uploadView->renderFailResponse($response[1]);
 				}
 	}
 
@@ -39,5 +42,5 @@ class uploadControll{
 		return false;
 	}
 
-	
+
 }

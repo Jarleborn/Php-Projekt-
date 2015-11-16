@@ -1,19 +1,19 @@
 <?php
 
 class RecentController {
-	
-	private $RecentView;
-	private $DAL;
 
-	public function __construct(RecentView $RecentView, DAL $DAL){
+	private $RecentView;
+	private $RecentDAL;
+
+	public function __construct(RecentView $RecentView, RecentDAL $RecentDAL){
 
 		$this->RecentView = $RecentView;
-		$this->DAL = $DAL;
+		$this->RecentDAL = $RecentDAL;
 		$this->renderRecent();
 	}
 
 	public function renderRecent(){
-		$recentImages = $this->DAL->getrecentImages();
+		$recentImages = $this->RecentDAL->getrecentImages();
 		$this->RecentView->renderRecent($recentImages);
 	}
 
