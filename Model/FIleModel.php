@@ -3,16 +3,39 @@
 class FileModel {
 	private $response = [];
 	public function validateTheFIle($UserInputedFIle){
+		// $acceptable = array(
+	  //       'image/jpeg',
+	  //       'image/jpg',
+	  //       'image/gif',
+	  //       'image/png'
+    // 	);
+
 		$acceptable = array(
-	        'image/jpeg',
-	        'image/jpg',
-	        'image/gif',
-	        'image/png'
-    	);
+							'image/gif',
+							'image/jpeg',
+							'image/png' ,
+							'application/x-shockwave-flash',
+							'image/psd',
+							'image/bmp',
+							'image/tiff',
+							'image/tiff',
+							'image/jp2' ,
+							'image/iff' ,
+							'image/vnd.wap.wbmp',
+							'image/xbm',
+							'image/vnd.microsoft.icon'
+			);
 
     	try{
 
-			if(!in_array($UserInputedFIle['userfile']['type'], $acceptable) && (!empty($UserInputedFIle["userfile"]["type"]))) {
+								$finfo = new finfo(FILEINFO_MIME);
+                $type = $finfo->file($UserInputedFIle['userfile']['tmp_name']);//change the field_name
+                $mime = substr($type, 0, strpos($type, ';'));
+                //return $mime;
+
+								var_dump($mime);
+								var_dump($acceptable);
+			if(!in_array($mime, $acceptable)) {
 				throw new RuntimeException('Invalid file type. Only  JPG, GIF and PNG types are accepted.');
 			}
 		    elseif ($UserInputedFIle['userfile']['size'] > 1073741824) {

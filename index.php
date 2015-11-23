@@ -8,6 +8,7 @@ require_once ('View/UploadView.php');
 require_once ('View/recentView.php');
 require_once ('Controller/recentController.php');
 require_once ('Model/RecentDAL.php');
+require_once ('Model/deleateDAL.php');
 
 
 error_reporting(E_ALL);
@@ -22,7 +23,11 @@ $UploadView = new uploadedView();
 $uploadControll = new uploadControll($FileModel, $UploadView, $DAL, $RecentDAL);
 $recentView = new RecentView();
 $recentController = new RecentController($recentView, $RecentDAL);
+$deleateDAL = new deleateDAL();
 
+
+ob_start();
+$deleateDAL->getAllFilesInDB();
 $NavigationView->renderUploadForm();
 
 ?>
