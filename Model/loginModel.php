@@ -12,11 +12,11 @@ class LogInModel{
 	private $DAL;
 	private $SessionModel;
 
-	public function __construct(DAL $DAL, Session $Session) {
+	public function __construct(loginDAL $DAL, Session $Session) {
 
 		$this->DAL = $DAL;
 		$this->SessionModel = $Session;
-		session_start(LogInModel::$LOGGED_IN_SESSION);
+		//session_start(LogInModel::$LOGGED_IN_SESSION);
 	}
 
 	public function login($usrnam, $pass){
@@ -24,7 +24,7 @@ class LogInModel{
 		$this->SessionModel->setUserNameIsSession($usrnam);
 		$this->Thelogin = false;
 		if($this->compareUserName($usrnam) && $this->comparePassword($pass)){
-
+			var_dump("inloggad");
 			//var_dump($_SESSION[self::$USRNAM_SESSION]);
 			$_SESSION[self::$LOGGED_IN_SESSION] = true;
 			$this->SetRetMeddage("Welcome");

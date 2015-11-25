@@ -7,7 +7,7 @@ class deleateDAL
 {
     //TODO Här tar vi bort från databasen
     function __construct() {
-      $this->mysqli = new mysqli("localhost", "root", "GrovSnus2", "images");
+      $this->mysqli = new mysqli("localhost", "root", "", "images");
       if (mysqli_connect_errno()) {
           printf("Connect failed: %s\n", mysqli_connect_error());
           exit();
@@ -30,20 +30,34 @@ class deleateDAL
       unset($this->ImageLinks);
     }
 
-    if(isset($_GET['Upload'])){
-			$this->UploadImage();
-		}
+    // if(isset($_GET['Upload'])){
+		// 	$this->UploadImage();
+		// }
 
     // echo "<pre>";
     // print_r($this->LinkwithBothIDandLink);
     // echo "</pre>";
 
 
-$this->printOutAllPicturesFormDB($this->LinkwithBothIDandLink);
+//$this->printOutAllPicturesFormDB($this->LinkwithBothIDandLink);
     return $this->LinkwithBothIDandLink;
 
   }
 
+  public function printOutAllPicturesFormDB($arrayWithTheNameOfThePictures)
+  {
+    //var_dump("h3ej");
+    echo "<ul>";
+    foreach ($arrayWithTheNameOfThePictures as $name) {
+      //TODO Lös detta för detta e kass
+      echo "<a href='?".$name[0]."'><img class='deleatePicList' src='data/".$name[1]."' width='100'  /></a>";
+      if(isset($_GET[$name[0]])){
+        $this->deleateImage($name[0]);
+
+      }
+    }
+    echo "</ul>";
+  }
   public function deleateImage($ID)
   {
     var_dump($ID);

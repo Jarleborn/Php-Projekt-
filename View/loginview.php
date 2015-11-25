@@ -42,6 +42,11 @@ class LoginView {
 		return $this->message = $mes;
 	}
 
+
+	public function renderNotLogedInMessage()
+	{
+		echo "Användarnamnet eller lösenordet är fel, vänligen försök igen";
+	}
 	//Här va de private innan
 	public function generateLogoutButtonHTML($message) {
 		return '
@@ -60,7 +65,7 @@ class LoginView {
 
 	//Här va de private innan
 	public function generateLoginFormHTML($message) {
-		return '
+		echo '
 			<form method="post" >
 				<fieldset>
 					<legend>Login - enter Username and password</legend>

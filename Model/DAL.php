@@ -12,7 +12,7 @@ class DAL{
 
 		$this->FileModel = $FileModel;
 
-		$this->mysqli = new mysqli("localhost", "root", "GrovSnus2", "images");
+		$this->mysqli = new mysqli("localhost", "root", "", "images");
 		if (mysqli_connect_errno()) {
 		    printf("Connect failed: %s\n", mysqli_connect_error());
 		    exit();

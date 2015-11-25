@@ -3,7 +3,7 @@
 class Session{
 
  	private static $USERNAME_SESSION ="USERNAME";
- 	private static $RETMESSAGE_SESSION ="";
+ 	private static $RETMESSAGE_SESSION ="RETMESSAGE";
  	private $username;
 
  	public function __construct(){
@@ -24,13 +24,13 @@ class Session{
 
  	public function setSessionRetMessage($message){
  		//var_dump($message);
- 		$_SESSION[$RETMESSAGE_SESSION] = $message;
+ 		$_SESSION[self::$RETMESSAGE_SESSION] = $message;
  		//var_dump($_SESSION[self::$USERNAME_SESSION]);
  	}
 
  	public function getSessionRetMessage(){
  		//var_dump($_SESSION[self::$USERNAME_SESSION]);
- 		return $_SESSION[$RETMESSAGE_SESSION];
+ 		return $_SESSION[self::$RETMESSAGE_SESSION];
  		//session_destroy();
  	}
 }
