@@ -7,7 +7,7 @@ private $response;
 	public function __construct(DAL $DAL){
 
 		$this->DAL = $DAL;
-		
+
 	}
 
 	public function renderHeader()
@@ -15,7 +15,8 @@ private $response;
 		echo'<head>
 		<link rel="stylesheet" type="text/css" href="Style/style.css">
 		<meta charset="UTF-8"/>
-		</head>';
+		</head>
+	<a href="index.php">Hem</a>   <a href="?deleate"> Radera bilder </a> <br />';
 	}
 
 	public function renderUploadForm(){

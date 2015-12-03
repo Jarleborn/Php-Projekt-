@@ -2,8 +2,17 @@
 
 class uploadedView{
 
-	public function __construct(){
+	private $Navigationview;
+	public function __construct($Navigationview){
 
+		$this->Navigationview = $Navigationview;
+
+		$this->Navigationview->renderHeader();
+		$this->Navigationview->renderUploadForm();
+		// echo'<head>
+		// <link rel="stylesheet" type="text/css" href="Style/style.css">
+		// <meta charset="UTF-8"/>
+		// </head>';
 	}
 
 	public function renderFailResponse($failResponse){
@@ -41,5 +50,12 @@ class uploadedView{
 		array_push($FileWithDir, $uploadfile);
 		// $stringToReturn = $_FILES['userfile']['tmp_name'], $uploadfile;
 		return $FileWithDir;
+	}
+
+	public function DoesUserWantToUpload(){
+		if(isset($_GET['Upload'])){
+			return true;
+		}
+		return false;
 	}
 }

@@ -5,8 +5,10 @@
    */
   class RecentDAl
   {
+    public $recentImageLinks = array();
+
     function __construct() {
-      $this->mysqli = new mysqli("localhost", "root", "", "images");
+      $this->mysqli = new mysqli("localhost", "root", "GrovSnus2", "images");
       if (mysqli_connect_errno()) {
           printf("Connect failed: %s\n", mysqli_connect_error());
           exit();
@@ -16,6 +18,7 @@
 
     public function getrecentImages()
 	{
+
 		$stmt = $this->mysqli->prepare("SELECT link FROM  `links` ORDER BY id DESC LIMIT 0 , 5");
 		if($stmt === false){
 			throw new Exception("A database error");
@@ -25,6 +28,7 @@
 		while($stmt->fetch()){
 			$this->recentImageLinks[] = $recentImageLink;
 		}
+    //var_dump($this->recentImageLinks);
 		return $this->recentImageLinks;
 	}
 	public function saveImageLink($link)

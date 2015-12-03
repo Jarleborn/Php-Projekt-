@@ -9,7 +9,10 @@ class deleateView
 
   function __construct()
   {
-    # code...
+    echo'<head>
+		<link rel="stylesheet" type="text/css" href="Style/style.css">
+		<meta charset="UTF-8"/>
+		</head>';
   }
   public function printOutAllPicturesFormDB($arrayWithTheNameOfThePictures)
   {
@@ -19,11 +22,25 @@ class deleateView
     foreach ($arrayWithTheNameOfThePictures as $name) {
       //TODO Lös detta för detta e kass
       echo "<li><a href='?".$name[0]."'><img class='deleatePicList' src='data/".$name[1]."' width='100'  /></a></li>";
-      if(isset($_GET[$name[0]])){
-  			$this->deleateImage($name[0]);
-
-  		}
+      // if(isset($_GET[$name[0]])){
+  		// 	$this->deleateImage($name[0]);
+      //
+  		// }
     }
     echo "</ul>";
+  }
+
+  public function renderSuccessfulDeleateMessage()
+  {
+    var_dump("piss");
+    echo "Bilden togs bort";
+  }
+
+  public function DoesUserWantToSeeTheDeleatePage()
+  {
+    if(isset($_GET['deleate'])){
+      return true;
+		}
+    return false;
   }
 }

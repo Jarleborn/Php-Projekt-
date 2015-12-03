@@ -36,7 +36,7 @@ class uploadControll{
 	}
 
 	public function DoesUserWantToUpload(){
-		if(isset($_GET['Upload'])){
+		if($this->uploadView->DoesUserWantToUpload()){
 			$this->UploadImage();
 		}
 		return false;

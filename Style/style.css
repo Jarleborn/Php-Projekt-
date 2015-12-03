@@ -50,3 +50,7 @@ img{
 hr{
     clear: both;
 }
+
+li{
+	list-style: none;
+}

@@ -33,8 +33,8 @@ class FileModel {
                 $mime = substr($type, 0, strpos($type, ';'));
                 //return $mime;
 
-								var_dump($mime);
-								var_dump($acceptable);
+								// var_dump($mime);
+								// var_dump($acceptable);
 			if(!in_array($mime, $acceptable)) {
 				throw new RuntimeException('Invalid file type. Only  JPG, GIF and PNG types are accepted.');
 			}
