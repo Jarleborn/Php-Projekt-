@@ -1,8 +1,5 @@
 <?php
 
-  /**
-   *
-   */
   class RecentDAl
   {
     public $recentImageLinks = array();
@@ -28,7 +25,7 @@
 		while($stmt->fetch()){
 			$this->recentImageLinks[] = $recentImageLink;
 		}
-    //var_dump($this->recentImageLinks);
+
 		return $this->recentImageLinks;
 	}
 	public function saveImageLink($link)

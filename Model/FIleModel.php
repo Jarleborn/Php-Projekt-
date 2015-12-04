@@ -3,12 +3,7 @@
 class FileModel {
 	private $response = [];
 	public function validateTheFIle($UserInputedFIle){
-		// $acceptable = array(
-	  //       'image/jpeg',
-	  //       'image/jpg',
-	  //       'image/gif',
-	  //       'image/png'
-    // 	);
+
 
 		$acceptable = array(
 							'image/gif',
@@ -29,12 +24,9 @@ class FileModel {
     	try{
 
 								$finfo = new finfo(FILEINFO_MIME);
-                $type = $finfo->file($UserInputedFIle['userfile']['tmp_name']);//change the field_name
+                $type = $finfo->file($UserInputedFIle['userfile']['tmp_name']);
                 $mime = substr($type, 0, strpos($type, ';'));
-                //return $mime;
 
-								// var_dump($mime);
-								// var_dump($acceptable);
 			if(!in_array($mime, $acceptable)) {
 				throw new RuntimeException('Invalid file type. Only  JPG, GIF and PNG types are accepted.');
 			}

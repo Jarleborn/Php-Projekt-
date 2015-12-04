@@ -1,12 +1,9 @@
 <?php
 
 class NavigationView {
-private $DAL;
 private $Succes = 'Succes';
 private $response;
-	public function __construct(DAL $DAL){
-
-		$this->DAL = $DAL;
+	public function __construct(){
 
 	}
 

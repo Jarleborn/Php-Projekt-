@@ -9,10 +9,6 @@ class uploadedView{
 
 		$this->Navigationview->renderHeader();
 		$this->Navigationview->renderUploadForm();
-		// echo'<head>
-		// <link rel="stylesheet" type="text/css" href="Style/style.css">
-		// <meta charset="UTF-8"/>
-		// </head>';
 	}
 
 	public function renderFailResponse($failResponse){
@@ -20,7 +16,6 @@ class uploadedView{
 		echo $failResponse;
 
 	}
-
 	public function renderSuccessResponse($Name)
 	{
 		echo 'Bilden laddades upp utan problem! <br /><br /><br />
